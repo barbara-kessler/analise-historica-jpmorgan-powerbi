@@ -1,2 +1,26 @@
 # analise-historica-jpmorgan-powerbi
-Dashboard de análise de performance de ativos da JPMorgan (1980–2026). Apresenta indicadores de retorno anual, valor acumulado, crescimento YTD, volatilidade e volume negociado. Permite avaliar liquidez, risco e tendências de mercado. ⚠️ Dados de 2026 disponíveis apenas até abril.
+## 📌 Objetivo
+Dashboard interativo em Power BI para análise histórica da performance dos ativos da JPMorgan (1980–2026).  
+Permite avaliar rentabilidade, volatilidade, liquidez e tendências de mercado em diferentes períodos.
+
+## 📊 Indicadores
+- Retorno Anual (%)  
+- Valor Final Acumulado  
+- Crescimento YTD (%)  
+- Amplitude Média (volatilidade)  
+- Volume Total negociado  
+- Variação Percentual Mensal  
+
+## 🛠️ Tecnologias Utilizadas
+- Power BI Desktop  
+- Modelagem de dados  
+- DAX avançado  
+- Visualizações interativas  
+
+## ⚠️ Observações
+- Os dados de 2026 estão disponíveis apenas até abril.  
+- O dashboard inclui simulação de investimentos com capital inicial personalizado.  
+
+## 📈 Valor para o Negócio
+Este projeto conecta cálculos técnicos a insights estratégicos, apoiando decisões sobre alocação de capital, análise de risco e identificação de tendências de mercado.
+
