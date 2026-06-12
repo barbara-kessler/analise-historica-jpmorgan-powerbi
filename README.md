@@ -5,6 +5,7 @@ Permite avaliar rentabilidade, volatilidade, liquidez e tendências de mercado e
 
 ### 📷 Visualização do Dashboard
 Visualização geral do dashboard em Power BI, destacando indicadores de retorno, volatilidade, liquidez e tendências históricas dos ativos da JPMorgan  
+![Dashboard JPMorgan](Dashboard)
 
 ## 📊 Indicadores
 - Retorno Anual (%)  
