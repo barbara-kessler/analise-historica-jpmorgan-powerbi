@@ -407,3 +407,282 @@ Manipulação de Strings (UPPER + LEFT + RIGHT): Corrige a formatação padrão 
 
 Colunas de Ordenação: As colunas textuais (como Mês Curto e Dia Nome) utilizam as colunas numéricas de suporte (Mês Num e Dia Semana Num) para ordenação correta nos visuais, impedindo que os meses sejam exibidos em ordem alfabética (Abril, Agosto, etc.).
 
+
+---
+
+## 🎨  Experiência do Usuário (UX) e Tooltips Dinâmicas
+
+Para evitar a poluição visual no painel principal e fornecer insights profundos sob demanda, o projeto utiliza o conceito de **Custom Tooltips (Dicas de Ferramenta Personalizadas)**. Foi desenvolvida uma inteligência baseada em texto dinâmico que avalia a performance do ativo em tempo real.
+
+### 📜 Medida: Texto_Tooltip Retorno
+Esta medida unifica múltiplos cálculos matemáticos em blocos de texto formatados, injetando dinamicamente quebras de linha e testes condicionais de performance.
+
+```dax
+Texto_Tooltip Retorno = 
+VAR ValorRetorno = [Retorno Anual %]
+
+-- 1. Máscara de Formatação customizada para evidenciar valores positivos e negativos
+VAR TextoFormatado = 
+    FORMAT(ValorRetorno, "+0.00%;-0.00%;0.00%")
+
+-- 2. Calcula a média histórica geral de retorno do ativo para servir de linha de corte
+VAR MediaHistorica = 
+    AVERAGEX(
+        ALL(JPM_Data),
+        [Retorno Anual %]
+    )
+
+VAR MediaFormatada = 
+    FORMAT(MediaHistorica, "0.00%")
+
+RETURN
+-- 3. Trava de segurança caso o cursor não esteja posicionado sobre um ponto de dado útil
+IF(
+    ISBLANK(ValorRetorno),
+    "Passe o mouse em um mês",
+
+    -- 4. Concatenação de strings com formatação e quebra de linha automatizada (UNICHAR)
+    "Retorno Anual: " & TextoFormatado &
+    UNICHAR(10) & UNICHAR(10) &
+    "Média histórica: " & MediaFormatada &
+    UNICHAR(10) &
+    "Situação: " &
+    IF(
+        ValorRetorno > MediaHistorica,
+        "Acima da média",
+        "Abaixo da média"
+    )
+)
+
+🔍 Engenharia de Design e Princípios Aplicados:
+FORMAT(..., "+0.00%;-0.00%"): Configura o comportamento estético do número. Se o retorno for positivo, força a exibição do sinal de mais (+), facilitando a leitura imediata pelo usuário (Princípio de Percepção Visual).
+
+UNICHAR(10): Representa o caractere de quebra de linha (Line Feed) no padrão Unicode. Permite que uma única medida de texto distribua as informações verticalmente em formato de "parágrafos" dentro de um cartão comum, simulando uma tabela inteira.
+
+Análise Comparativa Contextual (IF Aninhado): Avalia o desempenho do mês selecionado contra a MediaHistorica. Em vez de apenas exibir números brutos, a Tooltip entrega uma resposta interpretada para o tomador de decisão ("Acima da média" ou "Abaixo da média").
+
+### 📜 Medida: Texto_Tooltip_Amplitude
+Esta medida foi desenvolvida especificamente para enriquecer a análise de volatilidade no gráfico de Amplitude Média Diária (High–Low). Ela exibe de forma contextualizada o mês avaliado e a variação média em dólares.
+
+```dax
+Texto_Tooltip_Amplitude = 
+    -- 1. Captura o nome do mês abreviado tratado esteticamente na dimensão calendário
+    "Mês: " & SELECTEDVALUE( 'Calendario'[Mês Curto] ) & 
+    UNICHAR(10) & 
+    "Amplitude Média" & 
+    UNICHAR(10) & 
+    -- 2. Concatena o símbolo da moeda com o valor formatado em duas casas decimais
+    "US$ " & FORMAT( [Amplitude Média], "0.00" )
+
+🔍 Engenharia de Design e Princípios Aplicados:
+Integração com a dCalendario (SELECTEDVALUE): O modelo lê dinamicamente o ponto do gráfico onde o usuário posicionou o mouse, isolando o atributo de tempo correto para a exibição do texto (ex: "Mês: Set").
+
+Uso Estratégico de Espaçamento (UNICHAR(10)): A quebra de linha por caractere Unicode organiza as informações em três blocos verticais bem definidos, otimizando a leitura rápida (Scannability) sem demandar espaço excessivo na tela principal.
+
+Consistência de Notação Financeira (FORMAT): Força a exibição padronizada das casas decimais mesmo para valores inteiros, mantendo a integridade visual dos dados financeiros apresentados.
+
+### 📜 Medida: Texto_Tooltip_YTD
+Esta medida foi estruturada para fornecer uma análise comparativa robusta de Year-to-Date (YTD) versus o ano anterior (YoY) no gráfico de linhas de Crescimento Acumulado, entregando contexto temporal imediato ao usuário.
+
+```dax
+Texto_Tooltip_YTD = 
+VAR RetornoAtualYTD = [Crescimento YTD %]
+
+-- 1. Desloca o período atual em exatamente um ano para trás para buscar o histórico equivalente
+VAR RetornoAnoAnterior =
+    CALCULATE([Crescimento YTD %], SAMEPERIODLASTYEAR(Calendario[Date]))
+
+VAR MesSelecionado = SELECTEDVALUE(Calendario[Mês Curto])
+VAR AnoSelecionado = SELECTEDVALUE(Calendario[Ano])
+
+-- 2. Subtração direta para montar dinamicamente o rótulo de texto do ano passado
+VAR AnoAnterior = AnoSelecionado - 1
+
+RETURN
+-- 3. Validação de segurança de contexto
+IF(
+    ISBLANK(RetornoAtualYTD),
+    "Passe o mouse em um mês",
+    
+    -- 4. Construção da string concatenada com máscaras de porcentagem idênticas
+    MesSelecionado & "/" & AnoSelecionado &
+    UNICHAR(10) &
+    "Crescimento YTD: " & FORMAT(RetornoAtualYTD, "0.0%") &
+    UNICAL(10) &
+    "Ano anterior (" & MesSelecionado & "/" & AnoAnterior & "): " & 
+    FORMAT(RetornoAnoAnterior, "0.0%")
+)
+
+🔍 Engenharia de Design e Princípios Aplicados:
+SAMEPERIODLASTYEAR: Avalia o contexto de filtro temporal ativo no ponto do gráfico e desloca a janela de datas em exatamente -1 ano, mantendo o cálculo acumulado (YTD) perfeitamente alinhado com o ciclo anterior.
+
+Construção Dinâmica de Strings: Ao criar a variável AnoAnterior e concatená-la diretamente no texto, a Tooltip evita mensagens estáticas e genéricas. O resultado entrega um rótulo altamente profissional focado na experiência de leitura (ex: "Ano anterior (Abr/2007):").
+
+Alinhamento Estético de Unidades: Mantém o padrão de exibição percentual com uma casa decimal ("0.0%"), garantindo consistência visual com os demais indicadores macro do relatório.
+
+### 📜 Medida: Texto_Tooltip_Preco_Tendencia
+Esta medida atua no gráfico composto de Preço vs. Tendência de Longo Prazo. Ela disseca o preço real de fechamento contra a linha matemática de tendência, calculando o spread (diferença) absoluto e injetando formatação financeira cirúrgica para valores acima ou abaixo da média histórica.
+
+```dax
+Texto_Tooltip_Preco_Tendencia = 
+VAR PrecoFechamento = [Preço Fechamento]
+VAR TendenciaLongoPrazo = [Tendencia_Longo_Prazo]
+VAR Diferenca = PrecoFechamento - TendenciaLongoPrazo
+
+VAR DataSelecionada = MAX(Calendario[Date])
+VAR MesRaw = FORMAT(DataSelecionada, "MMM")
+
+-- 1. Tratamento Estético: Garante consistência visual com a dCalendario (Ex: "Dez")
+VAR MesSelecionado = UPPER(LEFT(MesRaw,1)) & RIGHT(MesRaw,LEN(MesRaw)-1)
+VAR AnoSelecionado = YEAR(DataSelecionada)
+
+RETURN
+-- 2. Validação de presença de dados
+IF(
+    ISBLANK(PrecoFechamento),
+    "Passe o mouse em um mês",
+    MesSelecionado & "/" & AnoSelecionado &
+    UNICHAR(10) &
+    "Preço de fechamento: US$ " & FORMAT(PrecoFechamento, "#,##0.00") &
+    UNICHAR(10) &
+    "Tendência de longo prazo: US$ " & FORMAT(TendenciaLongoPrazo, "#,##0.00") &
+    UNICHAR(10) &
+    "Diferença: " &
+        -- 3. Engenharia de String Financeira: Evita quebras de máscara com números negativos
+        IF(
+            Diferenca > 0,
+            "+US$ " & FORMAT(Diferenca, "#,##0.00"),
+            "-US$ " & FORMAT(ABS(Diferenca), "#,##0.00") -- Usa ABS para isolar o sinal e fixá-lo antes do cifrão
+        )
+)
+
+🔍 Engenharia de Design e Princípios Aplicados:
+Uso da Função ABS() (Valor Absoluto): Retira o sinal negativo nativo do número quando a diferença está abaixo da tendência. Isso permite que o desenvolvedor manipule textualmente a posição exata do caractere "-", evitando bugs visuais na máscara da moeda (garantindo "-US$ 4,11" em vez de "US$ -4,11").
+
+Análise de Spread de Mercado: Permite que o usuário identifique em frações de segundo se o ativo do JPMorgan está sobrevalorizado (negociado com prêmio acima da tendência) ou descontado (negociado com desconto abaixo da tendência) naquele mês específico.
+
+Consistência Visual Centrada: Padroniza os separadores de milhar e decimal ("#,##0.00"), alinhando a experiência estética com relatórios de auditoria internacionais.
+
+### 📜 Medida: Texto_Tooltip_Volume
+Esta medida foi projetada para o gráfico de barras de Volume Histórico. Ela converte os valores brutos de transações em bilhões, calcula a variação percentual em relação ao ano anterior (YoY) e gera rótulos temporais dinâmicos e contextualizados.
+
+```dax
+Texto_Tooltip_Volume = 
+VAR VolumeAno = [Volume Total]
+
+-- 1. Desloca o contexto de tempo para buscar o volume financeiro do ano anterior
+VAR VolumeAnoAnterior =
+    CALCULATE(
+        [Volume Total],
+        SAMEPERIODLASTYEAR(Calendario[Date])
+    )
+
+-- 2. Calcula a variação percentual ano a ano de forma segura contra divisão por zero
+VAR Variacao = DIVIDE(VolumeAno - VolumeAnoAnterior, VolumeAnoAnterior)
+
+VAR AnoSelecionado = SELECTEDVALUE(Calendario[Ano])
+
+RETURN
+-- 3. Validação de segurança de contexto
+IF(
+    ISBLANK(VolumeAno),
+    "Passe o mouse em um ano",
+    
+    -- 4. Formatação e conversão direta para a escala de Bilhões (Bi)
+    "Ano " & AnoSelecionado &
+    UNICHAR(10) &
+    "Volume Total: US$ " & FORMAT(VolumeAno / 1000000000, "0.00") & " Bi" &
+    UNICHAR(10) &
+    "Ano anterior (" & AnoSelecionado - 1 & "): US$ " & FORMAT(VolumeAnoAnterior / 1000000000, "0.00") & " Bi" &
+    UNICHAR(10) &
+    "Variação: " & FORMAT(Variacao, "0.0%")
+)
+
+🔍 Engenharia de Design e Princípios Aplicados (Tooltip & Eixo):
+Otimização de Escala Financeira: Ao dividir os valores por 1.000.000.000 tanto na Tooltip quanto no Eixo, o modelo elimina sequências massivas de zeros na tela (ex: exibindo US$ 10,37 Bi ao invés de US$ 10.370.000.000), o que reduz drasticamente a carga cognitiva do usuário.
+
+Cálculo YoY Seguro (DIVIDE): A função DIVIDE intercepta internamente qualquer falha de herança de dados ou anos iniciais vazios na tabela de fatos, retornando um resultado limpo no cálculo da Variacao.
+
+Rótulos Matemáticos Inteligentes: A expressão AnoSelecionado - 1 monta de forma automatizada o ano de comparação no texto, permitindo que qualquer alteração de filtro ou segmentação atualize a legenda da dica de ferramenta em tempo real.
+
+### 📜 Medida: Texto_Tooltip_Variação Mensal
+Esta medida foi desenvolvida para monitorar as oscilações pontuais e mensais do ativo. Ela compara o rendimento percentual do mês atual diretamente com o desempenho do mesmo mês no ano anterior, fornecendo uma visão clara de sazonalidade e tendências de curto prazo.
+
+```dax
+Texto_Tooltip_Variação Mensal = 
+VAR RetornoMensal = [Variação % Mensal]
+
+-- 1. Captura o comportamento do indicador recuando exatamente um ano no tempo
+VAR RetornoMensalAnoAnterior =
+    CALCULATE(
+        [Variação % Mensal],
+        SAMEPERIODLASTYEAR(Calendario[Date])
+    )
+
+VAR MesSelecionado = SELECTEDVALUE(Calendario[Mês Curto])
+VAR AnoSelecionado = SELECTEDVALUE(Calendario[Ano])
+VAR AnoAnterior = AnoSelecionado - 1
+
+RETURN
+-- 2. Validação de segurança de contexto
+IF(
+    ISBLANK(RetornoMensal),
+    "Passe o mouse em um mês",
+    
+    -- 3. Interpolação de texto dinâmico com máscaras percentuais de uma casa decimal
+    MesSelecionado & "/" & AnoSelecionado &
+    UNICHAR(10) &
+    "Variação mensal: " & FORMAT(RetornoMensal, "0.0%") &
+    UNICHAR(10) &
+    "Ano anterior (" & MesSelecionado & "/" & AnoAnterior & "): " & 
+    FORMAT(RetornoMensalAnoAnterior, "0.0%")
+)
+
+🔍 Engenharia de Design e Princípios Aplicados:
+Análise de Sazonalidade YoY Mensal: Permite ao investidor avaliar se a queda ou alta em um mês específico (Ex: Junho) é uma anomalia de mercado ou um comportamento padrão repetitivo do ativo quando comparado ao ano anterior.
+
+Preservação de Contexto Sincronizado: Utiliza as variáveis de tempo para reconstruir o rótulo da legenda dinamicamente, mantendo o padrão estético e a fácil leitura (Readability) de todo o ecossistema de dicas de ferramenta do relatório.
+
+### 📜 Medida: Texto_Tooltip_Volume_Preco
+Esta medida foi projetada de forma exclusiva para o gráfico combinado de barras e linhas (Volume Total vs. Preço de Fechamento). Ela unifica dados de duas naturezas diferentes (volume transacionado em milhões e preço do ativo em dólares) em um único bloco de insights rápidos, calculando o desvio em relação à tendência.
+
+```dax
+Texto_Tooltip_Volume_Preco = 
+VAR VolumeAno = [Volume Total]
+VAR PrecoFechamento = [Preço Fechamento]
+VAR TendenciaLongoPrazo = [Tendencia_Longo_Prazo]
+VAR DiferencaPreco = PrecoFechamento - TendenciaLongoPrazo
+
+VAR DataSelecionada = MAX(Calendario[Date])
+VAR MesRaw = FORMAT(DataSelecionada, "MMM")
+
+-- 1. Tratamento Estético: Mantém a primeira letra do mês em maiúscula (Ex: "Dez")
+VAR MesSelecionado = UPPER(LEFT(MesRaw,1)) & RIGHT(MesRaw,LEN(MesRaw)-1)
+VAR AnoSelecionado = YEAR(DataSelecionada)
+
+RETURN
+-- 2. Validação Lógica Restritiva: Só exibe o texto se ambos os indicadores coexistirem no ponto
+IF(
+    ISBLANK(VolumeAno) || ISBLANK(PrecoFechamento),
+    "Passe o mouse em um ponto",
+    MesSelecionado & "/" & AnoSelecionado &
+    UNICHAR(10) &
+    -- 3. Escala em Milhões: Ajuste milimétrico para o contexto gráfico mensal
+    "Volume Total: US$ " & FORMAT(VolumeAno / 1000000, "0.00") & " Mi" &
+    UNICHAR(10) &
+    "Preço de fechamento: US$ " & FORMAT(PrecoFechamento, "#,##0.00") &
+    UNICHAR(10) &
+    "Diferença vs tendência: " &
+        -- 4. Formatação de Sinais Isolados com ABS para evitar erros na string monetária
+        IF(
+            DiferencaPreco > 0,
+            "+US$ " & FORMAT(DiferencaPreco, "#,##0.00"),
+            "-US$ " & FORMAT(ABS(DiferencaPreco), "#,##0.00")
+        )
+)
+
+🔍 Engenharia de Design e Princípios Aplicados:
+Escalabilidade Adaptativa (/ 1000000): Demonstra maturidade na modelagem visual ao perceber que o volume agregado mensal deve ser expresso na casa dos milhões (Mi), enquanto o volume agregado anual utiliza bilhões (Bi). Isso respeita a carga cognitiva ideal para o usuário técnico.
+
+Operador de Curto-Circuito (||): Aplica uma validação rigorosa que protege o componente visual caso ocorra um mês atípico com negociações suspensas (preço ou volume nulos), impedindo exibições parciais ou incoerentes.
+
