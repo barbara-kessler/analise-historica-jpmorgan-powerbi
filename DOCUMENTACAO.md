@@ -22,7 +22,12 @@ Os gráficos listados abaixo **tiveram suas interações desativadas** em relaç
 1. **Preço de Fechamento vs. Tendência de Longo Prazo (Gráfico de Linha)**
 2. **Volume Total por Ano (Gráfico de Colunas)**
 
-* **Por que isso foi feito?** Se esses gráficos fossem filtrados pelo ano selecionado, eles exibiriam apenas um ponto ou uma única coluna isolada na tela. Ao desativar a interação via menu *Formato > Editar Interações*, garantimos que o usuário possa analisar a linha de tendência inteira desde 1980 até 2026, usando o segmentador apenas para atualizar os cartões de cálculo e o gráfico de crescimento YTD mensal.
+Os gráficos listados abaixo **tiveram suas interações desativadas** em relação ao Segmentador de Ano:
+
+1. **Preço de Fechamento vs. Tendência de Longo Prazo (Gráfico de Linha)**
+2. **Volume Total por Ano (Gráfico de Colunas)**
+
+* **Por que isso foi feito?** Se esses gráficos fossem filtrados pelo ano selecionado, eles exibiriam apenas um ponto ou uma única coluna isolada na tela. Ao desativar a interação via menu *Formato > Editar Interações*, garantimos que o usuário possa analisar a linha de tendência inteira desde 1980 até 2026. O segmentador de ano continua ativo para atualizar dinamicamente todos os demais visuais da página.
 
 ## 🧠 Modelagem de Dados e Medidas DAX
 
