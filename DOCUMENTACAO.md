@@ -508,7 +508,7 @@ IF(
     MesSelecionado & "/" & AnoSelecionado &
     UNICHAR(10) &
     "Crescimento YTD: " & FORMAT(RetornoAtualYTD, "0.0%") &
-    UNICAL(10) &
+    UNICHAR(10) &
     "Ano anterior (" & MesSelecionado & "/" & AnoAnterior & "): " & 
     FORMAT(RetornoAnoAnterior, "0.0%")
 )
