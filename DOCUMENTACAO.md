@@ -4,30 +4,23 @@ Este arquivo centraliza a documentação de todas as regras de negócio, tabelas
 
 ---
 
-## 📅 Estrutura de Filtros e Segmentação
+## 📅 1. Estrutura de Filtros e Segmentação
 
 ### Elemento: Segmentador – Ano Selecionado
-Para garantir que o usuário consiga navegar de forma limpa ano a ano, o projeto utiliza uma tabela de dimensão do tipo **Calendário** conectada à base histórica de dados (`JPM_Data`). 
-
-O filtro de ano afeta diretamente todas as medidas de performance do ano corrente. No entanto, para o funcionamento do simulador de longo prazo, esse contexto de filtro foi manipulado via código (utilizando funções como `ALL`) para permitir que o cálculo acumule o passado desde 1980 sem que o valor desapareça ou resete na tela.
+Para garantir uma navegação fluida e intuitiva, o projeto utiliza uma tabela de dimensão do tipo **Calendário** (`dCalendario`) conectada à base histórica de dados. O ano selecionado pelo usuário atua como o motor principal de contexto do painel.
 
 * **Origem do Filtro:** `'Calendario'[Ano]`
-* **Comportamento no Painel:** Altera dinamicamente os valores exibidos nos cartões de retorno percentual, nos gráficos de linha mensais e serve como o ponto de parada final (`AnoFiltrado`) para o cálculo do patrimônio acumulado.
+* **Comportamento Direto no Painel:** O ano escolhido altera simultaneamente todos os cartões principais de performance do ano corrente e filtra dinamicamente os **4 gráficos interativos** da página (Crescimento YTD, Retorno Anual %, Variação Mensal e Amplitude Média). Além disso, serve como o ponto de corte final para as medidas de inteligência de tempo.
 
-* ### 📊 Comportamento de Visuais e Interações de Gráficos
+### 📊 Controle de Interações e Visuais Congelados
+Para enriquecer a experiência do usuário (UX) e manter uma perspectiva histórica macro essencial para o mercado financeiro, o painel foi configurado para congelar o contexto de determinados elementos, ignorando o segmentador de ano através do menu *Formato > Editar Interações*.
 
-Para enriquecer a experiência do usuário e manter uma perspectiva histórica macro, o painel foi configurado para congelar o contexto de determinados visuais.
-
-Os gráficos listados abaixo **tiveram suas interações desativadas** em relação ao Segmentador de Ano:
-1. **Preço de Fechamento vs. Tendência de Longo Prazo (Gráfico de Linha)**
+**Visuais com Interações Desativadas:**
+1. **Preço de Fechamento vs. Tendência de Longo Prazo (Gráfico Combinado)**
 2. **Volume Total por Ano (Gráfico de Colunas)**
 
-Os gráficos listados abaixo **tiveram suas interações desativadas** em relação ao Segmentador de Ano:
-
-1. **Preço de Fechamento vs. Tendência de Longo Prazo (Gráfico de Linha)**
-2. **Volume Total por Ano (Gráfico de Colunas)**
-
-* **Por que isso foi feito?** Se esses gráficos fossem filtrados pelo ano selecionado, eles exibiriam apenas um ponto ou uma única coluna isolada na tela. Ao desativar a interação via menu *Formato > Editar Interações*, garantimos que o usuário possa analisar a linha de tendência inteira desde 1980 até 2026. O segmentador de ano continua ativo para atualizar dinamicamente todos os demais visuais da página.
+* **Por que isso foi feito?** Se esses dois gráficos sofressem o filtro direto do ano selecionado, a linha do tempo histórica seria destruída, exibindo apenas um único ponto ou uma única coluna isolada na tela. Mantendo as interações desativadas, garantimos que o usuário analise a linha de tendência inteira e o histórico de volume desde 1980 até 2026 de forma contínua.
+* **Inteligência de Contexto via Tooltip:** Embora esses dois gráficos ignorem o filtro estático do topo da página, eles permanecem dinâmicos no nível de detalhe (contexto de linha). Através das Tooltips Avançadas em DAX, o modelo lê o ponto exato onde o mouse do usuário está posicionado, calculando e exibindo os valores reais daquele ano ou mês específico em tempo real.
 
 ## 🧠 Modelagem de Dados e Medidas DAX
 
