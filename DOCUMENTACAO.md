@@ -339,6 +339,7 @@ RETURN
 
 
 🔬 Medida de Validação: Teste_Queda
+
 Esta medida atua como um teste lógico automatizado. Ela compara o patrimônio do ano atual contra o patrimônio do ano anterior (AnoAtual - 1) e valida visualmente se a curva de performance respondeu corretamente aos fechamentos negativos.
 ```
 Teste_Queda = 
