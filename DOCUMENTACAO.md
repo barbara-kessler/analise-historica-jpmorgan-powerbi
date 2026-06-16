@@ -2,7 +2,6 @@
 
 Este arquivo centraliza a documentação de todas as regras de negócio, tabelas de suporte e fórmulas personalizadas criadas em DAX para o funcionamento do painel do JPMorgan.
 
----
 
 ## 📅 1. Estrutura de Filtros e Segmentação
 
@@ -56,6 +55,7 @@ VAR PrecoFinal =
 RETURN
     -- 4. Realiza o cálculo de variação percentual com divisão segura
     DIVIDE(PrecoFinal - PrecoInicial, PrecoInicial)
+```
 
 🔍 Como essa fórmula funciona:
 TabelaDoAno: Isola a massa de dados para que o Power BI não perca tempo calculando o histórico inteiro, focando apenas no ano da tela.
