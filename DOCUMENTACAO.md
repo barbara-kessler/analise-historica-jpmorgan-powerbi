@@ -190,6 +190,7 @@ RETURN
     )
 ```
 🔍 Como essa fórmula funciona:
+
 MIN + MAX: A variável PrimeiraDataComPrecoNoAno força o Power BI a olhar para o ano do contexto atual e extrair a menor data disponível (geralmente o primeiro dia útil de janeiro), garantindo o ponto de partida do YTD.
 
 [Preço Fechamento Simples]: É uma medida base reutilizada dentro do cálculo. Chamar medidas prontas dentro de outras variáveis (como feito aqui) é uma excelente prática de reaproveitamento de código no DAX.
