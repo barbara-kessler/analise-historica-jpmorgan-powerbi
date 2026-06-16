@@ -85,7 +85,8 @@ GENERATESERIES: Cria automaticamente uma tabela de coluna única (chamada [Value
 Otimização: Essa abordagem via DAX poupa memória do relatório e evita a necessidade de carregar uma tabela externa apenas para fins de filtragem de valores.
 
 
-📐 Medida: Valor Capital Inicial
+### 📐 Medida: Valor Capital Inicial
+
 Esta medida atua como a ponte de comunicação, capturando o valor selecionado na tabela acima e distribuindo-o para os cálculos matemáticos do simulador.
 ```
 Valor Capital Inicial = SELECTEDVALUE('Capital Inicial'[Capital Inicial], 2000)
