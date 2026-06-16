@@ -156,6 +156,7 @@ Amplitude Média =
     )
 ````
 🔍 Como essa fórmula funciona:
+
 AVERAGEX: É uma função iteradora. Ao contrário da AVERAGE comum, ela cria um contexto de linha, permitindo fazer uma conta matemática coluna menos coluna (High - Low) dentro de cada registro antes de extrair a média final.
 
 Contexto de Negócio: Útil para identificar períodos de grande incerteza no mercado (onde a amplitude diária cresce muito, como em crises) versus períodos de estabilidade.
