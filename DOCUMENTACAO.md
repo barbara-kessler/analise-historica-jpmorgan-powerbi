@@ -63,7 +63,6 @@ TabelaDoAno: Isola a massa de dados para que o Power BI não perca tempo calcula
 TOPN com ASC e DESC: Garante que o modelo pegue os preços exatos de abertura e fechamento do ano, ignorando finais de semana e feriados em que a bolsa estava fechada.
 
 DIVIDE: Faz a conta matemática padrão de rentabilidade sem risco de quebrar o visual com erros de divisão por zero.
-
 ---
 
 ## 💰 Parâmetros Dinâmicos (Inputs do Usuário)
@@ -84,6 +83,7 @@ Capital Inicial =
 
 GENERATESERIES: Cria automaticamente uma tabela de coluna única (chamada [Value]) com 100 linhas (100, 200, 300... até 10.000).
 Otimização: Essa abordagem via DAX poupa memória do relatório e evita a necessidade de carregar uma tabela externa apenas para fins de filtragem de valores.
+
 
 📐 Medida: Valor Capital Inicial
 Esta medida atua como a ponte de comunicação, capturando o valor selecionado na tabela acima e distribuindo-o para os cálculos matemáticos do simulador.
@@ -132,6 +132,7 @@ IF(
     "US$ " & FORMAT(ValorPatrimonioNoAno, "#,##0.00", "pt-BR"),
     "US$ " & FORMAT(CapitalInicialDigitado, "#,##0.00", "pt-BR")
 )
+```
 
 🔍 Engenharia e Lógica de Contexto Aplicada:
 FIRSTNONBLANKVALUE & ALL: Bloqueia a busca do preço inicial estritamente em 1980, limpando qualquer filtro temporal que o usuário clique na tela. Isso evita o erro clássico de simulações que reiniciam do zero a cada ano.
@@ -151,11 +152,12 @@ Amplitude Média =
         JPM_Data, 
         JPM_Data[High] - JPM_Data[Low]
     )
-
+````
 🔍 Como essa fórmula funciona:
 AVERAGEX: É uma função iteradora. Ao contrário da AVERAGE comum, ela cria um contexto de linha, permitindo fazer uma conta matemática coluna menos coluna (High - Low) dentro de cada registro antes de extrair a média final.
 
 Contexto de Negócio: Útil para identificar períodos de grande incerteza no mercado (onde a amplitude diária cresce muito, como em crises) versus períodos de estabilidade.
+
 
 ### 📈 Medida: Crescimento YTD % (Year-To-Date)
 
@@ -183,13 +185,14 @@ RETURN
         [Preço Fechamento Simples] - PrecoInicialAno,
         PrecoInicialAno
     )
-
+```
 🔍 Como essa fórmula funciona:
 MIN + MAX: A variável PrimeiraDataComPrecoNoAno força o Power BI a olhar para o ano do contexto atual e extrair a menor data disponível (geralmente o primeiro dia útil de janeiro), garantindo o ponto de partida do YTD.
 
 [Preço Fechamento Simples]: É uma medida base reutilizada dentro do cálculo. Chamar medidas prontas dentro de outras variáveis (como feito aqui) é uma excelente prática de reaproveitamento de código no DAX.
 
 Contexto de Negócio: Permite avaliar em gráficos mensais como a ação se comportou mês a mês à medida que o ano avançava (por exemplo, mostrando se ela estava se recuperando ou afundando em relação a janeiro daquele ano).
+
 
 ### 📈 Bloco de Medidas: Análise de Preço e Desempenho Histórico
 
@@ -235,7 +238,7 @@ IF (
     BLANK(),
     DIVIDE ( FechamentoAtual - FechamentoAnterior, FechamentoAnterior )
 )
-
+```
 🔍 Como essas estruturas funcionam e se conectam:
 DATESMTD: Delimita o cálculo do preço ao período do início do mês até a data atual mapeada (Month-to-Date).
 
@@ -278,7 +281,7 @@ CALCULATE(
         [Volume Total]
     )
 )
-
+```
 🔍 Como essas estruturas funcionam no modelo:
 SUM: Consolida o volume diário da tabela de fatos de acordo com os filtros de tempo ativos.
 
@@ -288,7 +291,6 @@ Proporção e Escala (Volume e Volume para Eixo Bi): Aplicam a redução de esca
 
 AVERAGEX + ALL: Cria uma linha de tendência ou linha de corte estática no gráfico. Ao usar o ALL, a fórmula limpa o contexto de filtro de tempo, permitindo comparar o desempenho de um mês específico contra a média histórica de toda a série temporal desde 1980.
 
----
 
 ## 🧪 Medidas de Auditoria e Validação (Testes de Qualidade)
 
@@ -333,10 +335,11 @@ VAR PrecoFechamentoAnoSelecionado =
 RETURN
     -- 4. Retorna a multiplicação bruta para ser consumida pela medida de teste
     QuantidadeAcoesCompradas * PrecoFechamentoAnoSelecionado
+```
 
 🔬 Medida de Validação: Teste_Queda
 Esta medida atua como um teste lógico automatizado. Ela compara o patrimônio do ano atual contra o patrimônio do ano anterior (AnoAtual - 1) e valida visualmente se a curva de performance respondeu corretamente aos fechamentos negativos.
-
+```
 Teste_Queda = 
 VAR AnoAtual = MAX('Calendario'[Ano])
 VAR TemUmAno = HASONEVALUE('Calendario'[Ano])
@@ -363,7 +366,7 @@ IF(
         "⚠ Subiu ou manteve"  -- Confirma estabilidade ou ganho
     )
 )
-
+```
 🔍 Engenharia e Lógica Aplicada:
 HASONEVALUE: Garante que o teste só seja executado se houver apenas um ano selecionado no contexto de linha (como em uma tabela ou matriz), limpando o total geral onde a comparação ano a ano perderia o sentido.
 
@@ -371,7 +374,6 @@ AnoAtual - 1: Executa uma subtração direta no contexto de filtro para criar um
 
 Propósito do Teste: Ao cruzar o resultado desta medida com eventos históricos (como o estouro da bolha pontocom em 2000 ou a crise do Subprime em 2008), valida-se instantaneamente a integridade matemática de todo o simulador.
 
----
 
 ## 📅 Modelagem de Dados: Tabela Dimensão Calendário (`dCalendario`)
 
@@ -398,6 +400,7 @@ ADDCOLUMNS(
     "Trimestre", "T" & QUARTER([Date]),
     "Ano", YEAR([Date])
 )
+```
 
 🔍 Arquitetura e Engenharia de Atributos:
 CALENDARAUTO(): Varre a tabela de fatos (JPM_Data) automaticamente para identificar o menor e o maior ano com registros históricos, eliminando a manutenção manual de datas.
@@ -407,7 +410,6 @@ Manipulação de Strings (UPPER + LEFT + RIGHT): Corrige a formatação padrão 
 Colunas de Ordenação: As colunas textuais (como Mês Curto e Dia Nome) utilizam as colunas numéricas de suporte (Mês Num e Dia Semana Num) para ordenação correta nos visuais, impedindo que os meses sejam exibidos em ordem alfabética (Abril, Agosto, etc.).
 
 
----
 
 ## 🎨  Experiência do Usuário (UX) e Tooltips Dinâmicas
 
@@ -452,6 +454,7 @@ IF(
         "Abaixo da média"
     )
 )
+```
 
 🔍 Engenharia de Design e Princípios Aplicados:
 FORMAT(..., "+0.00%;-0.00%"): Configura o comportamento estético do número. Se o retorno for positivo, força a exibição do sinal de mais (+), facilitando a leitura imediata pelo usuário (Princípio de Percepção Visual).
@@ -472,6 +475,7 @@ Texto_Tooltip_Amplitude =
     UNICHAR(10) & 
     -- 2. Concatena o símbolo da moeda com o valor formatado em duas casas decimais
     "US$ " & FORMAT( [Amplitude Média], "0.00" )
+```
 
 🔍 Engenharia de Design e Princípios Aplicados:
 Integração com a dCalendario (SELECTEDVALUE): O modelo lê dinamicamente o ponto do gráfico onde o usuário posicionou o mouse, isolando o atributo de tempo correto para a exibição do texto (ex: "Mês: Set").
@@ -511,6 +515,7 @@ IF(
     "Ano anterior (" & MesSelecionado & "/" & AnoAnterior & "): " & 
     FORMAT(RetornoAnoAnterior, "0.0%")
 )
+```
 
 🔍 Engenharia de Design e Princípios Aplicados:
 SAMEPERIODLASTYEAR: Avalia o contexto de filtro temporal ativo no ponto do gráfico e desloca a janela de datas em exatamente -1 ano, mantendo o cálculo acumulado (YTD) perfeitamente alinhado com o ciclo anterior.
@@ -554,6 +559,7 @@ IF(
             "-US$ " & FORMAT(ABS(Diferenca), "#,##0.00") -- Usa ABS para isolar o sinal e fixá-lo antes do cifrão
         )
 )
+```
 
 🔍 Engenharia de Design e Princípios Aplicados:
 Uso da Função ABS() (Valor Absoluto): Retira o sinal negativo nativo do número quando a diferença está abaixo da tendência. Isso permite que o desenvolvedor manipule textualmente a posição exata do caractere "-", evitando bugs visuais na máscara da moeda (garantindo "-US$ 4,11" em vez de "US$ -4,11").
@@ -596,6 +602,7 @@ IF(
     UNICHAR(10) &
     "Variação: " & FORMAT(Variacao, "0.0%")
 )
+```
 
 🔍 Engenharia de Design e Princípios Aplicados (Tooltip & Eixo):
 Otimização de Escala Financeira: Ao dividir os valores por 1.000.000.000 tanto na Tooltip quanto no Eixo, o modelo elimina sequências massivas de zeros na tela (ex: exibindo US$ 10,37 Bi ao invés de US$ 10.370.000.000), o que reduz drasticamente a carga cognitiva do usuário.
@@ -636,6 +643,7 @@ IF(
     "Ano anterior (" & MesSelecionado & "/" & AnoAnterior & "): " & 
     FORMAT(RetornoMensalAnoAnterior, "0.0%")
 )
+```
 
 🔍 Engenharia de Design e Princípios Aplicados:
 Análise de Sazonalidade YoY Mensal: Permite ao investidor avaliar se a queda ou alta em um mês específico (Ex: Junho) é uma anomalia de mercado ou um comportamento padrão repetitivo do ativo quando comparado ao ano anterior.
@@ -679,6 +687,7 @@ IF(
             "-US$ " & FORMAT(ABS(DiferencaPreco), "#,##0.00")
         )
 )
+```
 
 🔍 Engenharia de Design e Princípios Aplicados:
 Escalabilidade Adaptativa (/ 1000000): Demonstra maturidade na modelagem visual ao perceber que o volume agregado mensal deve ser expresso na casa dos milhões (Mi), enquanto o volume agregado anual utiliza bilhões (Bi). Isso respeita a carga cognitiva ideal para o usuário técnico.
