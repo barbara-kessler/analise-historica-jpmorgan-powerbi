@@ -53,7 +53,7 @@ VAR PrecoFinal =
     )
 
 RETURN
-    -- 4. Realiza o cálculo de variação percentual com divisão segura
+-- 4. Realiza o cálculo de variação percentual com divisão segura
     DIVIDE(PrecoFinal - PrecoInicial, PrecoInicial)
 ```
 
