@@ -136,6 +136,7 @@ IF(
 ```
 
 🔍 Engenharia e Lógica de Contexto Aplicada:
+
 FIRSTNONBLANKVALUE & ALL: Bloqueia a busca do preço inicial estritamente em 1980, limpando qualquer filtro temporal que o usuário clique na tela. Isso evita o erro clássico de simulações que reiniciam do zero a cada ano.
 
 LASTNONBLANKVALUE & FILTER: Permite que o Power BI navegue até o final do ano selecionado na tela para capturar o preço de fechamento atualizado, garantindo que o patrimônio caia ou suba de forma realista (como a queda visível nos testes de 2007 e 2008).
