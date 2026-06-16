@@ -114,7 +114,7 @@ VAR PrecoOrigem1980 =
         ALL ( JPM_Data )
     )
 
--- 2. Calcula quantas ações foram compradas lá in 1980 com o capital digitado
+-- 2. Calcula quantas ações foram compradas lá em 1980 com o capital digitado
 VAR QuantidadeAcoesCompradas = DIVIDE(CapitalInicialDigitado, PrecoOrigem1980)
 
 -- 3. Encontra o preço de fechamento no último dia útil do ano que está selecionado na tela
