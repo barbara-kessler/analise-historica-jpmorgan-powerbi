@@ -63,7 +63,7 @@ TabelaDoAno: Isola a massa de dados para que o Power BI não perca tempo calcula
 TOPN com ASC e DESC: Garante que o modelo pegue os preços exatos de abertura e fechamento do ano, ignorando finais de semana e feriados em que a bolsa estava fechada.
 
 DIVIDE: Faz a conta matemática padrão de rentabilidade sem risco de quebrar o visual com erros de divisão por zero.
----
+
 
 ## 💰 Parâmetros Dinâmicos (Inputs do Usuário)
 
