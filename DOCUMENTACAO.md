@@ -78,6 +78,7 @@ Esta tabela de suporte foi criada para gerar as opções numéricas que alimenta
 Capital Inicial = 
     -- Gera uma sequência numérica que começa em US$ 100, vai até US$ 10.000, pulando de 100 em 100
     GENERATESERIES(100, 10000, 100)
+```
 
 🔍 Como essa estrutura funciona:
 
@@ -86,9 +87,9 @@ Otimização: Essa abordagem via DAX poupa memória do relatório e evita a nece
 
 📐 Medida: Valor Capital Inicial
 Esta medida atua como a ponte de comunicação, capturando o valor selecionado na tabela acima e distribuindo-o para os cálculos matemáticos do simulador.
-
+```
 Valor Capital Inicial = SELECTEDVALUE('Capital Inicial'[Capital Inicial], 2000)
-
+```
 🔍 Como essa fórmula funciona no modelo:
 SELECTEDVALUE: Captura o valor exato que o usuário selecionou no filtro interativo na tela.
 
