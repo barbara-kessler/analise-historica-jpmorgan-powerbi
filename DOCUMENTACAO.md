@@ -183,7 +183,7 @@ VAR PrecoInicialAno =
     )
 
 RETURN
-    -- 3. Calcula a variação percentual entre o preço atual e o preço do início do ano
+-- 3. Calcula a variação percentual entre o preço atual e o preço do início do ano
     DIVIDE (
         [Preço Fechamento Simples] - PrecoInicialAno,
         PrecoInicialAno
@@ -337,7 +337,7 @@ VAR PrecoFechamentoAnoSelecionado =
     )
 
 RETURN
-    -- 4. Retorna a multiplicação bruta para ser consumida pela medida de teste
+ -- 4. Retorna a multiplicação bruta para ser consumida pela medida de teste
     QuantidadeAcoesCompradas * PrecoFechamentoAnoSelecionado
 ```
 
@@ -388,7 +388,7 @@ Para habilitar as análises de Inteligência de Tempo (Time Intelligence) e gara
 ```dax
 Calendario = 
 ADDCOLUMNS(
-    -- 1. Cria automaticamente uma coluna única de datas cobrindo todo o período do modelo
+-- 1. Cria automaticamente uma coluna única de datas cobrindo todo o período do modelo
     CALENDARAUTO(),
     
     "Dia Num", DAY([Date]),
@@ -397,10 +397,10 @@ ADDCOLUMNS(
     "Semana Num", WEEKNUM([Date]),
     "Mês Num", MONTH([Date]),
     
-    -- 2. Tratamento Estético: Garante a primeira letra do mês em maiúscula (Ex: "Janeiro")
+-- 2. Tratamento Estético: Garante a primeira letra do mês em maiúscula (Ex: "Janeiro")
     "Mês Nome", UPPER(LEFT(FORMAT([Date], "MMMM"), 1)) & RIGHT(FORMAT([Date], "MMMM"), LEN(FORMAT([Date], "MMMM")) - 1),
     
-    -- 3. Tratamento Estético: Formata a abreviação do mês com a primeira letra maiúscula (Ex: "Jan")
+-- 3. Tratamento Estético: Formata a abreviação do mês com a primeira letra maiúscula (Ex: "Jan")
     "Mês Curto", UPPER(LEFT(FORMAT([Date], "mmm"), 1)) & RIGHT(FORMAT([Date], "mmm"), 2),
     
     "Trimestre", "T" & QUARTER([Date]),
@@ -474,7 +474,7 @@ Esta medida foi desenvolvida especificamente para enriquecer a análise de volat
 
 ```dax
 Texto_Tooltip_Amplitude = 
-    -- 1. Captura o nome do mês abreviado tratado esteticamente na dimensão calendário
+-- 1. Captura o nome do mês abreviado tratado esteticamente na dimensão calendário
     "Mês: " & SELECTEDVALUE( 'Calendario'[Mês Curto] ) & 
     UNICHAR(10) & 
     "Amplitude Média" & 
@@ -513,7 +513,7 @@ IF(
     ISBLANK(RetornoAtualYTD),
     "Passe o mouse em um mês",
     
-    -- 4. Construção da string concatenada com máscaras de porcentagem idênticas
+-- 4. Construção da string concatenada com máscaras de porcentagem idênticas
     MesSelecionado & "/" & AnoSelecionado &
     UNICHAR(10) &
     "Crescimento YTD: " & FORMAT(RetornoAtualYTD, "0.0%") &
@@ -558,7 +558,7 @@ IF(
     "Tendência de longo prazo: US$ " & FORMAT(TendenciaLongoPrazo, "#,##0.00") &
     UNICHAR(10) &
     "Diferença: " &
-        -- 3. Engenharia de String Financeira: Evita quebras de máscara com números negativos
+-- 3. Engenharia de String Financeira: Evita quebras de máscara com números negativos
         IF(
             Diferenca > 0,
             "+US$ " & FORMAT(Diferenca, "#,##0.00"),
@@ -599,7 +599,7 @@ IF(
     ISBLANK(VolumeAno),
     "Passe o mouse em um ano",
     
-    -- 4. Formatação e conversão direta para a escala de Bilhões (Bi)
+-- 4. Formatação e conversão direta para a escala de Bilhões (Bi)
     "Ano " & AnoSelecionado &
     UNICHAR(10) &
     "Volume Total: US$ " & FORMAT(VolumeAno / 1000000000, "0.00") & " Bi" &
@@ -641,7 +641,7 @@ IF(
     ISBLANK(RetornoMensal),
     "Passe o mouse em um mês",
     
-    -- 3. Interpolação de texto dinâmico com máscaras percentuais de uma casa decimal
+ -- 3. Interpolação de texto dinâmico com máscaras percentuais de uma casa decimal
     MesSelecionado & "/" & AnoSelecionado &
     UNICHAR(10) &
     "Variação mensal: " & FORMAT(RetornoMensal, "0.0%") &
@@ -686,7 +686,7 @@ IF(
     "Preço de fechamento: US$ " & FORMAT(PrecoFechamento, "#,##0.00") &
     UNICHAR(10) &
     "Diferença vs tendência: " &
-        -- 4. Formatação de Sinais Isolados com ABS para evitar erros na string monetária
+-- 4. Formatação de Sinais Isolados com ABS para evitar erros na string monetária
         IF(
             DiferencaPreco > 0,
             "+US$ " & FORMAT(DiferencaPreco, "#,##0.00"),
