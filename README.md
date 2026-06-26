@@ -42,7 +42,7 @@ Para mapear a saúde financeira e o comportamento dos ativos da JPMorgan, este d
 
 </details>
 
----
+--- 
 
 ### 🔍 Estudos de Caso Práticos (Navegando pelo Dashboard)
 
