@@ -26,16 +26,33 @@ Visualização geral do dashboard em Power BI, destacando indicadores de retorno
 - Os dados de 2026 estão disponíveis apenas até abril.  
 - O dashboard inclui simulação de investimentos com capital inicial personalizado.  
 
-## 📊 Análise de Dados e Descobertas (Visão de Negócio)
+### 🔍 Estudos de Caso Práticos (Navegando pelo Dashboard)
 
-Construir este dashboard me permitiu praticar a leitura de padrões visuais e entender como o mercado se comporta na prática. Analisando os 6 gráficos do painel, consegui extrair as seguintes conclusões:
+Para validar a utilidade prática das métricas desenvolvidas, utilizei os filtros do painel para isolar e analisar  três momentos históricos distintos da instituição:
 
-* **Padrão de Recuperação Histórica (Preço de Fechamento vs. Tendência de Longo Prazo):** Olhando para a série histórica completa de 1980 até 2026, fica evidente que o preço das ações passou por quedas acentuadas em momentos específicos. No entanto, o padrão visual mostra resiliência: após cada crise, a linha sempre voltou a subir e superou os recordes anteriores no longo prazo.
-* **Explosão de Movimentação em Crises (Volume Total por Ano):** No gráfico de colunas históricas, chama a atenção o crescimento enorme das barras entre 2008 e 2010. Isso me mostra que, em períodos de grande instabilidade, a quantidade de ações negociadas aumenta drasticamente, indicando forte movimentação dos investidores.
-* **Comportamento Não Linear (Variação Percentual Mensal):** Analisando as colunas de janeiro a dezembro, percebi que o desempenho não segue uma linha reta. O ano de 2008, por exemplo, fechou com um saldo anual negativo expressivo (-23,19%), mas os meses internos (como Setembro) apresentaram picos isolados de alta, mostrando que o mercado oscila muito mês a mês.
-* **Acompanhamento de Velocidade (Crescimento YTD % por Mês):** Este gráfico de linha me permite ver o acumulado do ano corrente. Ele mostra como a rentabilidade vai se somando mês após mês, ajudando a identificar em qual período do ano o ativo pegou mais impulso ou perdeu força.
-* **Mapeamento de Agitação (Amplitude Média Diária):** Este gráfico me ajudou a entender o conceito de risco na prática. Nos meses onde a linha da amplitude sobe e fica acima da linha média tracejada, significa que a distância entre o preço mais alto e o mais baixo do mesmo dia foi maior, indicando meses de maior agitação e incerteza no mercado.
-* **Comparação de Força (Volume Total vs. Preço de Fechamento):** Este gráfico combinado me permite cruzar duas informações vitais. Olhando para o comportamento das barras de volume junto com a linha de preço ao longo dos meses, consigo avaliar se as maiores mudanças no preço das ações aconteceram com muita ou pouca movimentação de capital no mercado.
+#### 1️⃣ Crise Financeira Global (Estudo de Caso: 2008)
+* **Constatação Visual:** No gráfico de longo prazo, o preço das ações tendeu a "andar de lado", apresentando uma leve queda seguida de estabilização. Em contrapartida, o gráfico de *Volume Total por Ano* registrou um salto massivo, atingindo picos históricos entre 2008 e 2010. Ao nível mensal, o gráfico de *Variação Percentual Mensal* mostra que o ano fechou com saldo negativo de -23,19%, mas com oscilações intensas e picos isolados de alta em meses específicos, como Setembro.
+* **Contexto de Negócio:** Esse padrão reflete o comportamento típico de mercado durante a Crise do *Subprime*. O pico drástico de volume indica uma busca extrema por liquidez e realocação de capital por parte dos investidores (pânico e negociação em massa). A estabilidade relativa do preço do JPM, enquanto concorrentes gigantes faliam na mesma época, reforça a sólida resiliência institucional do JPMorgan frente ao colapso do sistema bancário.
+
+#### 😷 2️⃣ Choque Global Repentino e Recuperação em "V" (Estudo de Caso: 2020)
+* **Constatação Visual:** O gráfico de *Variação Percentual Mensal* desenhou o clássico efeito de "Montanha-Russa". Registrou-se um recuo severo no primeiro quadrimestre, com quedas consecutivas de -11,9% em março e um agravamento para -14,6% em abril. No mesmo período, o gráfico de *Amplitude Média Diária* disparou significativamente acima da linha tracejada de média. Já o mês de novembro apresentou uma virada espetacular com uma alta isolada de +20,2%.
+* **Contexto de Negócio:** Este comportamento traduz visualmente o impacto da pandemia da COVID-19 e o conceito prático de volatilidade. O colapso e a forte agitação de preços (High-Low) em março e abril refletem o pânico macroeconômico e a paralisação da economia com o início dos *lockdowns* mundiais. Por outro lado, a forte valorização e quebra de tendência em novembro quantificam o otimismo imediato dos investidores e a reação direta do mercado financeiro ao anúncio da eficácia das primeiras vacinas globais.
+
+<details>
+<summary>📸 Clique aqui para ver o Dashboard filtrado em 2020</summary>
+
+![Dashboard JPMorgan 2020](Dashboard_2020.png)
+</details>
+
+#### 🚀 3️⃣ Ciclo de Expansão e Maturidade de Mercado (Estudo de Caso: 2025)
+* **Constatação Visual:** O indicador de *Retorno no Ano (%)* consolidou-se fortemente no campo positivo, atingindo uma valorização expressiva de 37,10%. O gráfico de *Crescimento YTD % por Mês* desenhando uma trajetória de ascensão contínua e linear (como uma escada para cima), interrompida apenas por breves correções saudáveis. Diferente dos anos de crise, as colunas de volume mantiveram-se estáveis, previsíveis e próximas à média histórica.
+* **Contexto de Negócio:** Este padrão representa um ambiente clássico de *Bull Market* (mercado em alta) saudável e sustentável. A valorização expressiva do preço de fechamento, sem a necessidade de uma explosão desordenada no volume de transações, indica que a alta é movida por confiança institucional genuína e solidez nos fundamentos econômicos do banco, e não por especulação barata ou pânico de liquidez.
+
+<details>
+<summary>📸 Clique aqui para ver o Dashboard filtrado em 2025</summary>
+
+![Dashboard JPMorgan 2025](Dashboard_2025.png)
+</details>
 
 ## 📈 Conclusão do Projeto e Aprendizado
 
