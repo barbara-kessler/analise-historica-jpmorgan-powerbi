@@ -12,24 +12,24 @@ Visualização geral do dashboard em Power BI, destacando indicadores de retorno
 Dashboard interativo em Power BI para análise histórica da performance dos ativos da JPMorgan (1980–2026). Permite avaliar rentabilidade, volatilidade, liquidez e tendências de mercado em diferentes períodos econômicos.
 
 ## 📊 Indicadores e Métricas Mapeadas
-* **Retorno no Ano (%)** (Métrica dinâmica que calcula o rendimento do ativo no ano selecionado)[cite: 6].
-* **Valor Final Acumulado** (Resultado da simulação com base no capital inicial)[cite: 6].
-* **Capital Inicial** (Parâmetro interativo inserido pelo usuário para simulações)[cite: 6].
-* **Crescimento YTD % por Mês** (*Year-to-Date* - velocidade do acúmulo de ganho ao longo dos meses)[cite: 6].
-* **Amplitude Média Diária** (Termômetro de volatilidade baseado na distância entre as máximas e mínimas - *High-Low*)[cite: 6].
-* **Volume Total por Ano** (Métrica de liquidez e fluxo de negociação a longo prazo)[cite: 6].
-* **Variação Percentual Mensal** (Performance isolada de cada mês do ano)[cite: 6].
-* **Volume Total vs. Preço de Fechamento** (Análise combinada de fluxo financeiro contra tendência de preço)[cite: 6].
+* **Retorno no Ano (%)** (Métrica dinâmica que calcula o rendimento do ativo no ano selecionado).
+* **Valor Final Acumulado** (Resultado da simulação com base no capital inicial).
+* **Capital Inicial** (Parâmetro interativo inserido pelo usuário para simulações).
+* **Crescimento YTD % por Mês** (*Year-to-Date* - velocidade do acúmulo de ganho ao longo dos meses).
+* **Amplitude Média Diária** (Termômetro de volatilidade baseado na distância entre as máximas e mínimas - *High-Low*).
+* **Volume Total por Ano** (Métrica de liquidez e fluxo de negociação a longo prazo).
+* **Variação Percentual Mensal** (Performance isolada de cada mês do ano).
+* **Volume Total vs. Preço de Fechamento** (Análise combinada de fluxo financeiro contra tendência de preço).
 
 ## 🛠️ Tecnologias e Conceitos Aplicados
-* **Power BI Desktop:** Construção integral do ecossistema de análise[cite: 6].
-* **Modelagem de Dados:** Estruturação de tabelas e relacionamentos eficientes[cite: 6].
-* **Linguagem DAX Avançada:** Criação de medidas calculadas e inteligência de tempo para análises comparativas[cite: 6].
-* **Design de Dashboards (UX/UI):** Criação de uma interface limpa, intuitiva e estruturada sob princípios de Storytelling de Dados e clareza visual[cite: 6].
+* **Power BI Desktop:** Construção integral do ecossistema de análise.
+* **Modelagem de Dados:** Estruturação de tabelas e relacionamentos eficientes.
+* **Linguagem DAX Avançada:** Criação de medidas calculadas e inteligência de tempo para análises comparativas.
+* **Design de Dashboards (UX/UI):** Criação de uma interface limpa, intuitiva e estruturada sob princípios de Storytelling de Dados e clareza visual.
 
 ## ⚠️ Observações Técnicas
-* Os dados do ano de 2026 estão disponíveis e atualizados até o mês de abril[cite: 6].
-* O dashboard inclui uma funcionalidade exclusiva de simulação de investimentos com base em um capital inicial totalmente personalizado pelo usuário[cite: 6].
+* Os dados do ano de 2026 estão disponíveis e atualizados até o mês de abril.
+* O dashboard inclui uma funcionalidade exclusiva de simulação de investimentos com base em um capital inicial totalmente personalizado pelo usuário
 
 ## 📊 Estrutura e Mecânica dos Gráficos
 
@@ -78,12 +78,11 @@ Para validar a utilidade prática das métricas desenvolvidas, utilizei os filtr
 </details>
 
 ## 📈 Conclusão do Projeto e Aprendizado
-
-Este projeto foi essencial para o meu desenvolvimento em Business Intelligence. Ele me deu a oportunidade de ir além da teoria e aplicar na prática conceitos importantes de Power BI e DAX. 
+Este projeto foi essencial para o meu desenvolvimento em Business Intelligence. Ele me deu a oportunidade de ir além da teoria e aplicar na prática conceitos importantes de Power BI e DAX.
 
 Durante o desenvolvimento, meus principais focos foram:
-* **Entender as conexões e filtros:** Aprender como os segmentadores influenciam os gráficos e como travar os visuais longos para que a linha do tempo não quebrasse.
-* **Praticar a leitura dos gráficos:** Treinar o olhar para identificar onde estão as maiores subidas, quedas e os picos de movimentação nas colunas.
-* **Organização visual:** Criar um layout limpo, combinando gráficos mensais e históricos na mesma tela sem deixar o visual poluído.
+* **Entender as conexões e filtros:** Aprender como os segmentadores influenciam os gráficos e como travar ou liberar os contextos de filtro para que as análises históricas não quebrassem.
+* **Praticar a leitura analítica:** Treinar o olhar técnico para identificar anomalias, grandes correções e picos de volume, traduzindo o comportamento visual em respostas de negócio.
+* **Organização e Storytelling:** Criar um layout limpo e corporativo, combinando visuais mensais e de longo prazo sem poluir a tela, garantindo uma leitura fluida para o usuário.
 
 Este dashboard consolida a minha base em Power BI e me dá muito mais segurança para continuar estudando, montando novos modelos e avançando na análise de dados!
