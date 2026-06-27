@@ -52,7 +52,10 @@ Para mapear a saúde financeira e o comportamento dos ativos da JPMorgan, este d
 
 Para validar a utilidade prática das métricas desenvolvidas, utilizei os filtros do painel para isolar e analisar  três momentos históricos distintos da instituição:
 
-#### 1️⃣ Crise Financeira Global (Estudo de Caso: 2008)
+### 1️⃣ Crise Financeira Global (Estudo de Caso: 2008)
+*(Análise baseada na imagem principal demonstrada no topo deste repositório)*
+
+* **Constatação Visual:** No gráfico de longo prazo...
 * **Constatação Visual:** No gráfico de longo prazo, o preço das ações tendeu a "andar de lado", apresentando uma leve queda seguida de estabilização. Em contrapartida, o gráfico de *Volume Total por Ano* registrou um salto massivo, atingindo picos históricos entre 2008 e 2010. Ao nível mensal, o gráfico de *Variação Percentual Mensal* mostra que o ano fechou com saldo negativo de -23,19%, mas com oscilações intensas e picos isolados de alta em meses específicos, como Setembro.
 * **Contexto de Negócio:** Esse padrão reflete o comportamento típico de mercado durante a Crise do *Subprime*. O pico drástico de volume indica uma busca extrema por liquidez e realocação de capital por parte dos investidores (pânico e negociação em massa). A estabilidade relativa do preço do JPM, enquanto concorrentes gigantes faliam na mesma época, reforça a sólida resiliência institucional do JPMorgan frente ao colapso do sistema bancário.
 
