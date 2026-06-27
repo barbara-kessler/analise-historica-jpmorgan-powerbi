@@ -1,11 +1,12 @@
-# analise-historica-jpmorgan-powerbi
-## 📌 Objetivo
-Dashboard interativo em Power BI para análise histórica da performance dos ativos da JPMorgan (1980–2026).  
-Permite avaliar rentabilidade, volatilidade, liquidez e tendências de mercado em diferentes períodos.
+# Análise Histórica de Performance de Ativos (JPMorgan Chase)
 
-### 📷 Visualização do Dashboard
-Visualização geral do dashboard em Power BI, destacando indicadores de retorno, volatilidade, liquidez e tendências históricas dos ativos da JPMorgan  
-![Dashboard JPMorgan](Dashboard.png)
+## 📌 Objetivo
+Desenvolvimento de um dashboard interativo em Power BI focado na análise do comportamento histórico dos ativos da JPMorgan (1980–2026). A solução visa transformar dados brutos de mercado em inteligência visual para apoiar a avaliação de rentabilidade, volatilidade de preços e liquidez em diferentes cenários econômicos.
+
+## 📸 Visualização do Painel
+![Visualização Geral do Dashboard]![Dashboard JPMorgan](Dashboard.png)
+*Print completo do painel interativo destacando os indicadores anuais, filtros dinâmicos e visões mensais do ativo.*
+
 
 
 ## 📊 Indicadores e Métricas Mapeadas
