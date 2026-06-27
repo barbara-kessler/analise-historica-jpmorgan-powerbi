@@ -1,4 +1,4 @@
-# Análise Histórica de Performance de Ativos (JPMorgan Chase)
+# Análise Histórica de Performance de Ativos (JPMorgan Chase) 
 
 ## 📌 Objetivo
 Desenvolvimento de um dashboard interativo em Power BI focado na análise do comportamento histórico dos ativos da JPMorgan (1980–2026). A solução visa transformar dados brutos de mercado em inteligência visual para apoiar a avaliação de rentabilidade, volatilidade de preços e liquidez em diferentes cenários econômicos.
