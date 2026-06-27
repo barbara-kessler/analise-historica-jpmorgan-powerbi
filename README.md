@@ -56,14 +56,16 @@ Para validar a utilidade prática das métricas desenvolvidas, utilizei os filtr
 * **Contexto de Negócio:** Esse padrão reflete o comportamento típico de mercado durante a Crise do *Subprime*. O pico drástico de volume indica uma busca extrema por liquidez e realocação de capital por parte dos investidores (pânico e negociação em massa). A estabilidade relativa do preço do JPM, enquanto concorrentes gigantes faliam na mesma época, reforça a sólida resiliência institucional do JPMorgan frente ao colapso do sistema bancário.
 
 #### 😷 2️⃣ Choque Global Repentino e Recuperação em "V" (Estudo de Caso: 2020)
-* **Constatação Visual:** O gráfico de *Variação Percentual Mensal* desenhou o clássico efeito de "Montanha-Russa". Registrou-se um recuo severo no primeiro quadrimestre, com quedas consecutivas de -11,9% em março e um agravamento para -14,6% em abril. No mesmo período, o gráfico de *Amplitude Média Diária* disparou significativamente acima da linha tracejada de média. Já o mês de novembro apresentou uma virada espetacular com uma alta isolada de +20,2%.
-* **Contexto de Negócio:** Este comportamento traduz visualmente o impacto da pandemia da COVID-19 e o conceito prático de volatilidade. O colapso e a forte agitação de preços (High-Low) em março e abril refletem o pânico macroeconômico e a paralisação da economia com o início dos *lockdowns* mundiais. Por outro lado, a forte valorização e quebra de tendência em novembro quantificam o otimismo imediato dos investidores e a reação direta do mercado financeiro ao anúncio da eficácia das primeiras vacinas globais.
 
 <details>
 <summary>📸 Clique aqui para ver o Dashboard filtrado em 2020</summary>
 
 ![Dashboard JPMorgan 2020](Dashboard_2020.png)
 </details>
+
+* **Constatação Visual:** O gráfico de *Variação Percentual Mensal* desenhou o clássico efeito de "Montanha-Russa". Registrou-se um recuo severo no primeiro quadrimestre, com quedas consecutivas de -11,9% em março e um agravamento para -14,6% em abril. No mesmo período, o gráfico de *Amplitude Média Diária* disparou significativamente acima da linha tracejada de média. Já o mês de novembro apresentou uma virada espetacular com uma alta isolada de +20,2%.
+* **Contexto de Negócio:** Este comportamento traduz visualmente o impacto da pandemia da COVID-19 e o conceito prático de volatilidade. O colapso e a forte agitação de preços (High-Low) em março e abril refletem o pânico macroeconômico e a paralisação da economia com o início dos *lockdowns* mundiais. Por outro lado, a forte valorização e quebra de tendência em novembro quantificam o otimismo imediato dos investidores e a reação direta do mercado financeiro ao anúncio da eficácia das primeiras vacinas globais.
+
 
 #### 🚀 3️⃣ Ciclo de Expansão e Maturidade de Mercado (Estudo de Caso: 2025)
 * **Constatação Visual:** O indicador de *Retorno no Ano (%)* consolidou-se fortemente no campo positivo, atingindo uma valorização expressiva de 37,10%. O gráfico de *Crescimento YTD % por Mês* desenhando uma trajetória de ascensão contínua e linear (como uma escada para cima), interrompida apenas por breves correções saudáveis. Diferente dos anos de crise, as colunas de volume mantiveram-se estáveis, previsíveis e próximas à média histórica.
