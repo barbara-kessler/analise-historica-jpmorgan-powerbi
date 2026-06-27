@@ -8,23 +8,28 @@ Visualização geral do dashboard em Power BI, destacando indicadores de retorno
 ![Dashboard JPMorgan](Dashboard.png)
 
 
-## 📊 Indicadores
-- Retorno Anual (%)  
-- Valor Final Acumulado  
-- Crescimento YTD (%)  
-- Amplitude Média (volatilidade)  
-- Volume Total negociado  
-- Variação Percentual Mensal  
+## 📌 Objetivo
+Dashboard interativo em Power BI para análise histórica da performance dos ativos da JPMorgan (1980–2026). Permite avaliar rentabilidade, volatilidade, liquidez e tendências de mercado em diferentes períodos econômicos.
 
-## 🛠️ Tecnologias Utilizadas
-- Power BI Desktop  
-- Modelagem de dados  
-- DAX avançado  
-- Visualizações interativas  
+## 📊 Indicadores e Métricas Mapeadas
+* **Retorno no Ano (%)** (Métrica dinâmica que calcula o rendimento do ativo no ano selecionado)[cite: 6].
+* **Valor Final Acumulado** (Resultado da simulação com base no capital inicial)[cite: 6].
+* **Capital Inicial** (Parâmetro interativo inserido pelo usuário para simulações)[cite: 6].
+* **Crescimento YTD % por Mês** (*Year-to-Date* - velocidade do acúmulo de ganho ao longo dos meses)[cite: 6].
+* **Amplitude Média Diária** (Termômetro de volatilidade baseado na distância entre as máximas e mínimas - *High-Low*)[cite: 6].
+* **Volume Total por Ano** (Métrica de liquidez e fluxo de negociação a longo prazo)[cite: 6].
+* **Variação Percentual Mensal** (Performance isolada de cada mês do ano)[cite: 6].
+* **Volume Total vs. Preço de Fechamento** (Análise combinada de fluxo financeiro contra tendência de preço)[cite: 6].
 
-## ⚠️ Observações
-- Os dados de 2026 estão disponíveis apenas até abril.  
-- O dashboard inclui simulação de investimentos com capital inicial personalizado.  
+## 🛠️ Tecnologias e Conceitos Aplicados
+* **Power BI Desktop:** Construção integral do ecossistema de análise[cite: 6].
+* **Modelagem de Dados:** Estruturação de tabelas e relacionamentos eficientes[cite: 6].
+* **Linguagem DAX Avançada:** Criação de medidas calculadas e inteligência de tempo para análises comparativas[cite: 6].
+* **Design de Dashboards (UX/UI):** Criação de uma interface limpa, intuitiva e estruturada sob princípios de Storytelling de Dados e clareza visual[cite: 6].
+
+## ⚠️ Observações Técnicas
+* Os dados do ano de 2026 estão disponíveis e atualizados até o mês de abril[cite: 6].
+* O dashboard inclui uma funcionalidade exclusiva de simulação de investimentos com base em um capital inicial totalmente personalizado pelo usuário[cite: 6].
 
 ## 📊 Estrutura e Mecânica dos Gráficos
 
