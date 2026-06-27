@@ -78,11 +78,12 @@ Para validar a utilidade prática das métricas desenvolvidas, utilizei os filtr
 </details>
 
 ## 📈 Conclusão do Projeto e Aprendizado
-Este projeto foi essencial para o meu desenvolvimento em Business Intelligence. Ele me deu a oportunidade de ir além da teoria e aplicar na prática conceitos importantes de Power BI e DAX.
+
+Este projeto foi essencial para o meu amadurecimento na entrega de inteligência de negócios. Ele me deu a oportunidade de ir além da teoria e aplicar na prática conceitos importantes de modelagem de dados e análise visual com Power BI e DAX.
 
 Durante o desenvolvimento, meus principais focos foram:
 * **Entender as conexões e filtros:** Aprender como os segmentadores influenciam os gráficos e como travar ou liberar os contextos de filtro para que as análises históricas não quebrassem.
 * **Praticar a leitura analítica:** Treinar o olhar técnico para identificar anomalias, grandes correções e picos de volume, traduzindo o comportamento visual em respostas de negócio.
 * **Organização e Storytelling:** Criar um layout limpo e corporativo, combinando visuais mensais e de longo prazo sem poluir a tela, garantindo uma leitura fluida para o usuário.
 
-Este dashboard consolida a minha base em Power BI e me dá muito mais segurança para continuar estudando, montando novos modelos e avançando na análise de dados!
+Este primeiro projeto fortalece os meus primeiros passos técnicos e me dá muito mais segurança para continuar estudando, desenvolvendo novos modelos e avançando na análise de dados.
