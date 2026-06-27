@@ -34,6 +34,7 @@ Desenvolvimento de um dashboard interativo em Power BI focado na análise do com
 <details>
 <summary>💡 Clique aqui para entender o que cada gráfico do painel analisa (Sem Spoiler)</summary>
 
+
 Para mapear a saúde financeira e o comportamento dos ativos da JPMorgan, este dashboard foi estruturado a partir de seis visões complementares:
 
 * **Amplitude Média Diária (High–Low):** Atua como o nosso indicador direto de risco e volatilidade prática, calculando o distanciamento entre as máximas e mínimas diárias para apontar períodos de forte agitação de mercado.
