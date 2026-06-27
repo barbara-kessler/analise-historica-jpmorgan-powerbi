@@ -32,7 +32,7 @@ Desenvolvimento de um dashboard interativo em Power BI focado na análise do com
 ## 📊 Estrutura e Mecânica dos Gráficos
 
 <details>
-<summary>💡 Clique aqui para entender o que cada gráfico do painel analisa (Sem Spoiler)</summary>
+<summary>💡 Clique aqui para entender o que cada gráfico do painel analisa (Sem Spoiler)</summary> 
 
 
 Para mapear a saúde financeira e o comportamento dos ativos da JPMorgan, este dashboard foi estruturado a partir de seis visões complementares:
