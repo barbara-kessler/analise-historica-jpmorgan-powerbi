@@ -8,9 +8,6 @@ Visualização geral do dashboard em Power BI, destacando indicadores de retorno
 ![Dashboard JPMorgan](Dashboard.png)
 
 
-## 📌 Objetivo
-Dashboard interativo em Power BI para análise histórica da performance dos ativos da JPMorgan (1980–2026). Permite avaliar rentabilidade, volatilidade, liquidez e tendências de mercado em diferentes períodos econômicos.
-
 ## 📊 Indicadores e Métricas Mapeadas
 * **Retorno no Ano (%)** (Métrica dinâmica que calcula o rendimento do ativo no ano selecionado).
 * **Valor Final Acumulado** (Resultado da simulação com base no capital inicial).
@@ -29,7 +26,7 @@ Dashboard interativo em Power BI para análise histórica da performance dos ati
 
 ## ⚠️ Observações Técnicas
 * Os dados do ano de 2026 estão disponíveis e atualizados até o mês de abril.
-* O dashboard inclui uma funcionalidade exclusiva de simulação de investimentos com base em um capital inicial totalmente personalizado pelo usuário
+* O dashboard inclui uma funcionalidade exclusiva de simulação de investimentos com base em um capital inicial totalmente personalizado pelo usuário.
 
 ## 📊 Estrutura e Mecânica dos Gráficos
 
