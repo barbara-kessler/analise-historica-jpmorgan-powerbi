@@ -4,7 +4,7 @@
 Desenvolvimento de um dashboard interativo em Power BI focado na análise do comportamento histórico dos ativos da JPMorgan (1980–2026). A solução visa transformar dados brutos de mercado em inteligência visual para apoiar a avaliação de rentabilidade, volatilidade de preços e liquidez em diferentes cenários econômicos.
 
 ## 📸 Visualização do Painel
-![Visualização Geral do Dashboard]![Dashboard JPMorgan](Dashboard.png)
+![Dashboard JPMorgan](Dashboard.png)
 *Print completo do painel interativo destacando os indicadores anuais, filtros dinâmicos e visões mensais do ativo.*
 
 
