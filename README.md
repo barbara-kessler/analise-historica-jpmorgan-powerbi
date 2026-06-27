@@ -36,11 +36,11 @@ Desenvolvimento de um dashboard interativo em Power BI focado na análise do com
 
 Para mapear a saúde financeira e o comportamento dos ativos da JPMorgan, este dashboard foi estruturado a partir de seis visões complementares:
 
+* **Amplitude Média Diária (High–Low):** Atua como o nosso indicador direto de risco e volatilidade prática, calculando o distanciamento entre as máximas e mínimas diárias para apontar períodos de forte agitação de mercado.
+* **Crescimento YTD % por Mês (Year To Date):** Monitora a velocidade e o acúmulo da rentabilidade desde o início de janeiro até o mês corrente, facilitando a identificação exata do trimestre onde o ativo ganhou tração.
 * **Preço de Fechamento vs. Tendência de Longo Prazo:** Mostra a evolução histórica do valor da ação ao longo das décadas e valida visualmente o princípio de resiliência e recuperação do banco após ciclos de baixa.
 * **Volume Total por Ano:** Mede a quantidade total de ações negociadas ano a ano, servindo como um termômetro para identificar picos de movimentação e o comportamento do investidor em cenários de instabilidade.
 * **Variação Percentual Mensal:** Revela como as oscilações acontecem na escala mensal, permitindo identificar que o desempenho do mercado não é linear e apresenta picos isolados de alta ou baixa mesmo em anos difíceis.
-* **Crescimento YTD % por Mês (Year To Date):** Monitora a velocidade e o acúmulo da rentabilidade desde o início de janeiro até o mês corrente, facilitando a identificação exata do trimestre onde o ativo ganhou tração.
-* **Amplitude Média Diária:** Atua como o nosso indicador direto de risco e volatilidade prática, calculando o distanciamento entre as máximas e mínimas diárias (*High-Low*) para apontar períodos de forte agitação de mercado.
 * **Volume Total vs. Preço de Fechamento:** Um gráfico combinado que cruza a liquidez com a linha de preço para diagnosticar se uma tendência de alta ou de baixa é sustentável e apoiada por fluxo institucional de capital.
 
 </details>
