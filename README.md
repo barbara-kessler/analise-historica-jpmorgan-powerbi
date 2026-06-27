@@ -60,7 +60,7 @@ Para validar a utilidade prática das métricas desenvolvidas, utilizei os filtr
 <details>
 <summary>📸 Clique aqui para ver o Dashboard filtrado em 2020</summary>
 
-![Dashboard JPMorgan 2020](Dashboard_2020.png)
+![Dashboard JPMorgan 2020](Dashboard_2020.png) 
 </details>
 
 * **Constatação Visual:** O gráfico de *Variação Percentual Mensal* desenhou o clássico efeito de "Montanha-Russa". Registrou-se um recuo severo no primeiro quadrimestre, com quedas consecutivas de -11,9% em março e um agravamento para -14,6% em abril. No mesmo período, o gráfico de *Amplitude Média Diária* disparou significativamente acima da linha tracejada de média. Já o mês de novembro apresentou uma virada espetacular com uma alta isolada de +20,2%.
