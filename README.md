@@ -22,7 +22,7 @@ Desenvolvimento de um dashboard interativo em Power BI focado na análise do com
 ## 🛠️ Tecnologias e Conceitos Aplicados
 * **Power BI Desktop:** Construção integral do ecossistema de análise.
 * **Modelagem de Dados:** Estruturação de tabelas e relacionamentos eficientes.
-* **Linguagem DAX Avançada:** Criação de medidas calculadas e inteligência de tempo para análises comparativas.
+* **Linguagem DAX:** Criação de medidas calculadas e inteligência de tempo para análises comparativas.
 * **Design de Dashboards (UX/UI):** Criação de uma interface limpa, intuitiva e estruturada sob princípios de Storytelling de Dados e clareza visual.
 
 ## ⚠️ Observações Técnicas
