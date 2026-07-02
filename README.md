@@ -65,15 +65,6 @@ Para validar a utilidade prática das métricas desenvolvidas, utilizei os filtr
 
 </details>
 
-### 3️⃣ Ciclo de Expansão e Maturidade de Mercado (Estudo de Caso: 2025)
-
-<details>
-<summary>📸 Clique aqui para ver o Dashboard filtrado em 2025</summary>
-
-![Dashboard JPMorgan 2025](Dashboard_2025.png)
-
-</details>
-
 * **Constatação Visual:** O indicador de *Retorno no Ano (%)* consolidou-se fortemente no campo positivo, atingindo uma valorização expressiva de 37,10%. O gráfico de *Crescimento YTD % por Mês* desenhou uma trajetória de ascensão contínua e linear (como uma escada para cima), interrompida apenas por breves correções saudáveis. Diferente dos anos de crise, as colunas de volume mantiveram-se estáveis, previsíveis e próximas à média histórica.
 * **Contexto de Negócio:** Este padrão representa um ambiente clássico de **Bull Market** (mercado em alta) saudável e sustentável. A valorização expressiva do preço de fechamento, sem a necessidade de uma explosão desordenada no volume de transações, indica que a alta é movida por confiança institucional genuína e solidez nos fundamentos econômicos do banco, e não por especulação barata ou pânico de liquidez.
 
