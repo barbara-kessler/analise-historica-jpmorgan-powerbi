@@ -5,7 +5,7 @@ Desenvolvimento de um dashboard interativo em Power BI focado na análise do com
 
 ## 📸 Visualização do Painel
 ![Visualização Geral do Dashboard](Dashboard.png)
-*Print completo do painel interativo destacando os indicadores anuais, filtros dinâmicos e visões mensais do ativo.*
+*Print completo do painel interativo destacando os indicadores anuais, filtros dinâmicos e visões mensais do ativo.* 
 
 ---
 
